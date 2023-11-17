@@ -26,19 +26,15 @@ export class UsbInventoryService {
 
   filterItems(filter: ItemFilter): Item[] {
     return this.items.filter((item) => {
-      // Check if item matches the filter criteria
 
-      // Model (contains)
       if (filter.model && !item.modelName.toLowerCase().includes(filter.model.toLowerCase())) {
         return false;
       }
 
-      // Category (exact match)
       if (filter.categoryId && item.categoryId !== filter.categoryId) {
         return false;
       }
 
-      // Capacity (range from - to)
       if (
         (filter.minCapacity && item.capacity < filter.minCapacity) ||
         (filter.maxCapacity && item.capacity > filter.maxCapacity)
@@ -46,7 +42,7 @@ export class UsbInventoryService {
         return false;
       }
 
-      return true; // Item matches all criteria
+      return true; 
     });
   }
 
